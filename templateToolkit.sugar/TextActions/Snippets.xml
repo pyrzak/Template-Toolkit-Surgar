@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+@author Guy Pyrzak <guy.pyrzak@gmail.com>
+@version 0.1
+@copyright Public domain 2010
+-->
+<action-recipes>
+	
+	<snippet id="tt.block" category="tools.Snippets.tt">
+		  <title>TT Block</title>
+		  <text><![CDATA[[% BLOCK ${1:name} %]
+   ${2:block...}
+[% END %]]]></text>
+		  <syntax-context>perl.html.templateToolkit, perl.html.templateToolkit *</syntax-context>
+		  <text-trigger>block</text-trigger>
+	</snippet>
+
+
+	<snippet id="tt.process" category="tools.Snippets.tt">
+		  <title>TT Process</title>
+		  <text><![CDATA[[% PROCESS ${1:template} ${2:args...} %]]]></text>
+		  <syntax-context>perl.html.templateToolkit, perl.html.templateToolkit *</syntax-context>
+		  <text-trigger>proc</text-trigger>
+	</snippet>
+
+
+	<snippet id="tt.ifelse" category="tools.Snippets.tt">
+		  <title>TT If Else</title>
+		  <text><![CDATA[[% IF ${1:expr} -%]
+   ${2:block...}
+[% ELSE -%]
+   ${3:block...}
+[% END %]]]></text>
+		  <syntax-context>perl.html.templateToolkit, perl.html.templateToolkit *</syntax-context>
+		  <text-trigger>ifelse</text-trigger>
+	</snippet>	
+	
+	
+	<snippet id="tt.foreach" category="tools.Snippets.tt">
+		  <title>TT For</title>
+		  <text><![CDATA[[% FOREACH ${1:item} IN ${2:list...} -%]
+   ${3:block...}
+[% END -%]]]></text>
+		  <syntax-context>perl.html.templateToolkit, perl.html.templateToolkit *</syntax-context>
+		  <text-trigger>for</text-trigger>
+	</snippet>	
+
+</action-recipes>

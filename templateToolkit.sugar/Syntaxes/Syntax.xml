@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+@author Guy Pyrzak <guy.pyrzak@gmail.com>
+@version 0.1
+@copyright Public domain 2010
+-->
+<syntax name="perl.html.templateToolkit">
+  <zones>
+    
+    <zone name="tt.block.end">
+      <expression>\[%\s(END)\s%\]</expression>
+      <capture number="1" name="keyword"/>      
+    </zone>
+    <zone name="tt.block.comment">
+     <starts-with>
+        <expression>\[%(#)\s*</expression>
+        <capture number="1" name="open_comment"/>
+      </starts-with>
+      <ends-with>
+          <expression>(%\])</expression>
+          <capture number="1" name="close_comment"/>
+      </ends-with>
+    </zone>
+    <zone name="tt.block.start">
+      <starts-with>
+        <expression>(\[%)[+-=]?\s*</expression>
+      </starts-with>
+      <subzones>
+      
+        <zone name="tt.oneline.comment">            
+          <expression>#[^%]*</expression>
+        </zone>
+      
+        <zone name="annoying_conditional">
+          <expression>\S\s+(IF)</expression>
+          <capture number="1" name="keyword"/>
+        </zone>
+        
+        <zone name="conditional">
+          <expression>(IF)</expression>
+          <capture number="1" name="keyword"/>
+        </zone>
+        
+        <zone name="elses">        
+           <expression>(ELSIF|ELSE)</expression>
+          <capture number="1" name="keyword"/>
+        </zone>
+        <zone name="function">
+          <expression>(BLOCK)\s*([a-zA-Z_?$][\w?$]*)</expression>
+           <capture number="1" name="keyword"/>
+           <capture number="2" name="name"/>
+        </zone>
+
+        <zone name="control">
+          <expression>(SWITCH|FOREACH)</expression>
+           <capture number="1" name="keyword"/>
+        </zone>
+
+        <zone name="keyword">
+          <expression>\b(FILTER|PROCESS|INCLUDE|FOR|IF|END|BLOCK|ELSE|SWITCH|FOREACH|SET|NEXT|ELSIF)\b</expression>
+        </zone>        
+        
+      </subzones>
+      <ends-with>
+          <expression>(%\])</expression>
+          <capture number="1" name="close_tt"/>
+      </ends-with>
+    </zone>
+   <!-- 
+    commenting this out because the HTML itemizer is a bit too agressive and
+    causes some strange behavior will wait that is fixed however end users 
+    are welcome to put this back in
+    <include syntax="text.html.basic" />   
+    -->
+    <include syntax="sourcecode.js"/>
+
+  </zones>
+</syntax>

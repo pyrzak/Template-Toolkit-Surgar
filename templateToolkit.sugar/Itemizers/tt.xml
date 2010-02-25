@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+@author Guy Pyrzak <guy.pyrzak@gmail.com>
+@version 0.1
+@copyright Public domain 2010
+-->
+<itemizer>
+<recipe name="conditional.tt">
+  <start-selector>tt.block.start:has-child(conditional:has-child(keyword:capture(name)))</start-selector>
+  <end-selector>tt.block.end</end-selector>
+  <subrecipes>
+    <include-root-recipes/>
+  </subrecipes>
+</recipe>
+
+<recipe name="function.tt">
+  <start-selector>tt.block.start:has-child(function:has-child(name:capture(name)))</start-selector>
+  <end-selector>tt.block.end</end-selector>
+  <subrecipes>
+    <include-root-recipes/>
+  </subrecipes>
+</recipe> 
+<recipe name="control.tt">
+  <start-selector>tt.block.start:has-child(control:has-child(keyword:capture(name)))</start-selector>
+  <end-selector>tt.block.end</end-selector>
+  <subrecipes>
+    <include-root-recipes/>
+  </subrecipes>
+</recipe>
+<recipe name="control.tt">
+  <start-selector>open_comment:capture(name))</start-selector>
+  <end-selector>close_comment</end-selector>
+  <subrecipes>
+    <include-root-recipes/>
+  </subrecipes>
+</recipe>
+
+</itemizer>

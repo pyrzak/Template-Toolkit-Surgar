@@ -1,0 +1,17 @@
+<!--
+@author Guy Pyrzak <guy.pyrzak@gmail.com>
+@version 0.1
+@copyright Public domain 2010
+-->
+
+<codesense version="1.0">
+    <set name="com.pyrzak.tt">    
+        <!-- YUI DOM -->
+        <completion string="YAHOO.util.Dom.addClass">
+            <behavior>
+                <append-static>(${1:element}, \"${2:className}\")</append-static>
+            </behavior> 
+        </completion>       
+        
+   </set>
+</codesense>
